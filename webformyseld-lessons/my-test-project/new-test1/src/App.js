@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Car from '/Car/Car.js';
+//import Car from '/Car/Car.js';
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
     return (
 
       <div style={divStyle}>
-      <h1>hej!</h1>
+      <h1 style={{'color':"blue"}}>hej!</h1>
       <h2>you</h2>
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -27,7 +27,7 @@ class App extends Component {
             Learn React
           </a>
         </header> */}
-        <Car/>
+        {/* <Car/> */}
       </div>
   
     );
