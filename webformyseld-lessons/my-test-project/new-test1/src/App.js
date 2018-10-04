@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-//import Car from '/Car/Car.js';
+import Car from './Car/Car';
 
 class App extends Component {
   render() {
@@ -9,41 +9,22 @@ class App extends Component {
         'textAlign': 'center'
     }
     return (
-
       <div style={divStyle}>
       <h1 style={{'color':"blue"}}>hej!</h1>
       <h2>you</h2>
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header> */}
-        {/* <Car/> */}
+        <Car name={'Ford'} year={2011}>
+        <p style={{'color':"blue"}}>COLOR</p>
+          </Car>
+        <Car name= 'Audi' year={2018}>
+          <p style={{'color':"red"}}>COLOR</p>
+          </Car>
+        <Car name= 'Skoda' year={2013}>
+        <p style={{'color':"silver"}}>COLOR</p>
+          </Car>
       </div>
   
     );
-    // return React.createElement(
-    //   'div',
-    //   {
-    //     className: "App"
-    //   },
-    //   React.createElement(
-    //     'h1',
-    //     null,
-    //     'Hello World!+'
-    //   )
-      
-
-    // )
+   
   }
 }
 
