@@ -10,10 +10,9 @@ state = {
     {name: 'Ford', year: 2018},
     {name: 'Audi', year: 2016},
     {name: 'Skoda', year: 2013},
-  ]
+  ],
+  pageTitle: 'React components'
 }
-
-
 
   render() {
     const divStyle = {
@@ -24,7 +23,8 @@ state = {
 
     return (
       <div style={divStyle}>
-      <h1 style={{'color':"blue"}}>hej!</h1>
+      <h1>{this.state.pageTitle}</h1>
+      <button>Change title</button>
       <h2>you</h2>
         <Car name={cars[0].name} year={cars[0].year}/>
         <Car name={cars[1].name} year={cars[1].year}/>     
