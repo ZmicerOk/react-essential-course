@@ -14,6 +14,10 @@ state = {
   pageTitle: 'React components'
 }
 
+changeTitleHandler=()=> {
+console.log('Clicked')
+}
+
   render() {
     const divStyle = {
         'textAlign': 'center'
@@ -24,7 +28,7 @@ state = {
     return (
       <div style={divStyle}>
       <h1>{this.state.pageTitle}</h1>
-      <button>Change title</button>
+      <button onClick={this.changeTitleHandler}>Change title</button>
       <h2>you</h2>
         <Car name={cars[0].name} year={cars[0].year}/>
         <Car name={cars[1].name} year={cars[1].year}/>     
