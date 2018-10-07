@@ -11,30 +11,62 @@ state = {
     {name: 'Audi', year: 2016},
     {name: 'Skoda', year: 2013},
   ],
-  pageTitle: 'React components'
+  pageTitle: 'React compons',
+  showCars: false,
 }
 
-changeTitleHandler=()=> {
-console.log('Clicked')
+changeTitleHandler=(pageTitle)=> {
+  this.setState({pageTitle})
+}
+
+toggleCarshandler = () =>{
+  this.setState({
+    showCars: !this.state.showCars
+  })
 }
 
   render() {
     const divStyle = {
         'textAlign': 'center'
     }
+
+    let cars=null
+
+    if (this.state.showCars){
+      cars = 
+        this.state.cars.map((car, index)=>{
+          return (
+            <Car
+            key={index}
+              name={car.name}
+              year={car.year}
+              onChangeTitle={()=>this.changeTitleHandler(car.name)}
+            />
+          )  
+          })
+      }
     
-    const cars = this.state.cars
+
 
     return (
       <div style={divStyle}>
       <h1>{this.state.pageTitle}</h1>
-      <button onClick={this.changeTitleHandler}>Change title</button>
+      <button onClick={this.toggleCarshandler}>Togle cars</button>
       <h2>you</h2>
-        <Car name={cars[0].name} year={cars[0].year}/>
-        <Car name={cars[1].name} year={cars[1].year}/>     
-        <Car name={cars[2].name} year={cars[2].year}/>
-      
-      </div>
+      {cars}
+      {/* {this.state.showCars
+        ?this.state.cars.map((car, index)=>{
+        return (
+          <Car
+          key={index}
+            name={car.name}
+            year={car.year}
+            onChangeTitle={()=>this.changeTitleHandler(car.name)}
+          />
+        )  
+        }):null 
+      } */}
+  </div>
     );
   }
 }
