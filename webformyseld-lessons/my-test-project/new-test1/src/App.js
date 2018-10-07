@@ -19,6 +19,19 @@ changeTitleHandler=(pageTitle)=> {
   this.setState({pageTitle})
 }
 
+deleteHandler(index) {
+  console.log("delete");
+}
+
+onChangeName = (name, index)=>{
+  console.log(name, index);
+  const car = this.state.cars[index];
+  car.name = name;
+  const cars = [...this.state.cars]
+  cars[index]=car;
+  this.setState({cars});
+}
+
 toggleCarshandler = () =>{
   this.setState({
     showCars: !this.state.showCars
@@ -40,32 +53,20 @@ toggleCarshandler = () =>{
             key={index}
               name={car.name}
               year={car.year}
-              onChangeTitle={()=>this.changeTitleHandler(car.name)}
+              onDelete={this.deleteHandler.bind(this, index)}
+              onChangeName={event=>this.onChangeName(event.target.value, index)}
             />
           )  
           })
       }
     
-
-
     return (
       <div style={divStyle}>
       <h1>{this.state.pageTitle}</h1>
       <button onClick={this.toggleCarshandler}>Togle cars</button>
       <h2>you</h2>
       {cars}
-      {/* {this.state.showCars
-        ?this.state.cars.map((car, index)=>{
-        return (
-          <Car
-          key={index}
-            name={car.name}
-            year={car.year}
-            onChangeTitle={()=>this.changeTitleHandler(car.name)}
-          />
-        )  
-        }):null 
-      } */}
+
   </div>
     );
   }
