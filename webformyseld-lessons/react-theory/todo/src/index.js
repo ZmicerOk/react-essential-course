@@ -5,19 +5,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-// function sq(x){
-//     return x*x;
-// }
+//Spread aoperator
 
-function fetchOrders( count=11, start=1){
+const arr = [1,2,3,4,5];
+// const res = Math.max.apply(Math, arr);
+// console.log(res);
+const arr2 = [3112,122,1213,1224,1245];
 
-    console.log('Getting', count, 'orders starting from', start);
-}
-fetchOrders();
-// const Person = () =>{''};
+const shallowCopy = [...arr, ...arr2];
 
-// new Person();
-// console.log(Person);
+console.log(shallowCopy);
 
 
 // If you want your app to work offline and load faster, you can change
