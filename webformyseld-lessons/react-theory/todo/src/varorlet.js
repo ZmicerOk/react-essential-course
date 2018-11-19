@@ -103,3 +103,41 @@ console.log(res3);
 
 const shallowCopy = [...arr, ...arr2];
 console.log(shallowCopy);
+//+++++++++++++++++++++++++++++
+//destructuring
+const person={
+    firstName: 'Peter',
+    lastName: 'Smith',
+    age: 27
+}
+
+// const firstName = person.firstName;
+// const lastName = person.lastName;
+
+// console.log(firstName, lastName);
+
+const {firstName, lastName} = person;
+console.log(firstName, lastName);
+
+const person2={
+    name: {
+    first: 'Peter',
+    last: 'Smith'
+    },
+    age: 27
+};
+const {name:{first, last}} = person2;
+console.log(first, last);
+
+const person3={
+    name: {
+    first: 'Peter',
+    last: 'Smith'
+    },
+    age: 27
+};
+
+const {role = "user"}=person3;
+const {mariageStatus:{gender="male"}={}}=person3;
+const {name:{first: firstName, last: lastName}} = person3;
+console.log(firstName, lastName, role, gender);
