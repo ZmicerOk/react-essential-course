@@ -1,0 +1,35 @@
+.elements {
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  text-align: center;
+  align-items: center;
+}
+
+.elements .elementRow {
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border:2px #807f7f solid;
+}
+
+.elements .elementRow.selected{
+  background-color: #d1defb;
+}
+
+.elements .elementRow .element {
+  width: 100%;
+  margin: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px #22624d solid;
+}
+
+.elements .elementRow .element.selected {
+  background-color: #d1defb;
+}

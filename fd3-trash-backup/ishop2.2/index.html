@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ishop</title>
+</head>
+
+<body>
+
+  <div id="container"></div>
+
+  <script src="https://unpkg.com/react@15/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+
+  <script src="CreateTable.js"></script>
+  <script src="CreateProduct.js"></script>
+  <link rel="stylesheet" type="text/css" href="Products.css" />
+
+  <script>
+    //goodsArray - массив с товарами
+    //itemID - id товара
+    //itemName - название товара
+    //count количество на складе
+    //price - цена товара
+    //itemPhotoUrl - ссылка на фото продукта 
+
+    // Каждая строка с товаром должна быть отдельным компонентом.
+    // Один из товаров может быть сделан «выбранным» щелчком в любое место строки. Строка выбранного товара выделяется цветом.
+    // В каждой строке с товаром — кнопка «удалить».
+    // По нажатию кнопки «удалить» у пользователя запрашивается подтверждения удаления (confirm) и товар удаляется.
+
+    var goodsArray = [{
+        itemID: 1,
+        itemName: 'пылесос',
+        count: 14,
+        price: 799.90,
+        itemPhotoUrl: "https://content2.onliner.by/catalog/device/header/ba307f3885edaead3226be73842bf6fa.png"
+      },
+      {
+        itemID: 2,
+        itemName: 'усилитель',
+        count: 5,
+        price: 1200.99,
+        itemPhotoUrl: "https://content2.onliner.by/catalog/device/header/2f48187d4791b3fa06852ddfb74e495a.jpeg"
+      },
+      {
+        itemID: 3,
+        itemName: 'кресло',
+        count: 152,
+        price: 577.90,
+        itemPhotoUrl: "https://content2.onliner.by/catalog/device/header/6827dd624b51ba955bd5b0b4449e8cb3.jpeg"
+      }
+    ];
+
+    ReactDOM.render(
+      React.createElement(CreateTable, {
+        items: goodsArray
+      }),
+      document.getElementById('container'));
+  </script>
+
+</body>
+
+</html>
