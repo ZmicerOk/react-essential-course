@@ -188,10 +188,17 @@ const fib = [1, 1, 2, 3, 5, 8, 13];
 const [, a, , b, , , c] = fib;
 console.log(a, b, c);
 
-const line = [[10,17],[14,7]];
-const [ [p1x,p1y], [p2x,p2y], [p3x=0, p3y=10]=[]]=line;
-console.log(p1x+p2y-p1y+p2x, p3x,p3y);
-const [p1, ...oth]=line;
+const line = [
+    [10, 17],
+    [14, 7]
+];
+const [
+    [p1x, p1y],
+    [p2x, p2y],
+    [p3x = 0, p3y = 10] = []
+] = line;
+console.log(p1x + p2y - p1y + p2x, p3x, p3y);
+const [p1, ...oth] = line;
 console.log(p1);
 console.log(oth);
 // _--
@@ -199,20 +206,120 @@ const dict2 = {
     duck: 'qwack',
     dog: 'wuff',
     mouse: 'squeak',
-    hamser:'squeak'
+    hamser: 'squeak'
 };
 const res = Object.entries(dict2)
-.filter(([, value]) => value==='squeak')
-.map(([key])=> key);
+    .filter(([, value]) => value === 'squeak')
+    .map(([key]) => key);
 console.log(res);
-
+//Array Destructuring
 const shape={
     type:"segment",
     coordinates: {
         start:[10,15],
-        finish:[12,12]
+        end:[17,15]
     }
 };
+const {coordinates:{start:[strtX, strtY], end:[endX,endY]}}=shape;
+console.log(strtX,strtY,endX,endY);
 
-const {coordinates:{start:[strtX, StartY], finish:[f1,f2]}}=shape;
-console.log(strtX,f2);
+//Template Literals
+const user = "Bob";
+const num = 17;
+const txt = "Hello, " + user + " you have " + num + " new friends!";
+const txt2 = `Hello, ${user} you have ${num-17} new friends!`;
+const txt3 = `Hello, now is ${Date.now()} but you ${user} have ${num+17} new friends!!!`;
+console.log(txt);
+console.log(txt2);
+console.log(txt3);
+
+//Objects
+const x=10;
+const y=10;
+const point = {
+    x:x,
+    y:y,
+    draw: function(){
+        //...
+    }
+};
+ console.log(point);
+ const p = {x,y, draw(ctx){
+     //
+ }};
+ console.log(p);
+
+ //Objects
+const prefix = '_blah_';
+const data = {
+    [prefix+'name']: 'Bob',
+    [prefix+'age']: 23
+};
+ console.log(data);
+
+ //16 Objects
+
+const defaults ={
+    host:'localhost',
+    dbName: 'blog',
+    user: 'admin'
+};
+
+const opts = {
+    user: 'john',
+    password: 'utopia'
+};
+
+const wasap = Object.assign({}, defaults, opts);//shallow copy?
+console.log(defaults);
+console.log(wasap);
+//16 Objects
+const person = {
+    name:'Bon Dylan',
+    friends: ['Emerson','Lake','Palmer']
+}
+const shallowCopy = Object.assign({}, person);
+person.friends.push('Franky goes to Hollywood');
+console.log(shallowCopy);
+
+//Spread operator for Objects
+const defaults ={
+    host:'localhost',
+    dbName: 'blog',
+    user: 'admin'
+};
+
+const opts = {
+    user: 'john',
+    password: 'utopia'
+};
+const port = 8080;
+const res = {
+    ...defaults,
+    ...opts,
+    port,
+    connect(){
+        //
+    }
+    };
+console.log(res);
+
+//Prototypes
+
+const animal = {
+    say:function(){
+        console.log(this.name, 'goes', this.voice);
+    }
+}
+const dog={
+    name: 'dog',
+    voice: 'woof'
+};
+Object.setPrototypeOf(dog, animal);
+const cat={
+    name: 'cat',
+    voice: 'meow'
+};
+Object.setPrototypeOf(cat, animal);
+dog.say();
+cat.say();

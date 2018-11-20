@@ -5,19 +5,25 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-//Array Destructuring
+//Prototypes
 
-const shape={
-    type:"segment",
-    coordinates: {
-        start:[10,15],
-        finish:[12,12]
+const animal = {
+    say:function(){
+        console.log(this.name, 'goes', this.voice);
     }
+}
+const dog={
+    name: 'dog',
+    voice: 'woof'
 };
-
-const {coordinates:{start:[strtX, StartY], finish:[f1,f2]}}=shape;
-console.log(strtX,f2);
- //   connect();
+Object.setPrototypeOf(dog, animal);
+const cat={
+    name: 'cat',
+    voice: 'meow'
+};
+Object.setPrototypeOf(cat, animal);
+dog.say();
+cat.say();
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
