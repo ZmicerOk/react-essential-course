@@ -1,29 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById('root'));
-//Prototypes
+ReactDOM.render(<App />, document.getElementById("root"));
 
-const animal = {
-    say:function(){
-        console.log(this.name, 'goes', this.voice);
-    }
+function Animal(name, voice) {
+  this.name = name;
+  this.voice = voice;
 }
-const dog={
-    name: 'dog',
-    voice: 'woof'
+
+Animal.prototype.say = function() {
+  console.log(this.name, "goes", this.voice);
 };
-Object.setPrototypeOf(dog, animal);
-const cat={
-    name: 'cat',
-    voice: 'meow'
-};
-Object.setPrototypeOf(cat, animal);
+const dog = new Animal("Dog", "woof");
+const cat = new Animal("Cat", "meou");
 dog.say();
 cat.say();
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA

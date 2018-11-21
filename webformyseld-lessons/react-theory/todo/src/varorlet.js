@@ -323,3 +323,80 @@ const cat={
 Object.setPrototypeOf(cat, animal);
 dog.say();
 cat.say();
+
+//Prototypes
+
+const animal = {
+    say:function(){
+        console.log(this.name, 'goes', this.voice);
+    }
+}
+const dog=Object.create(animal);
+dog.name="Dog";
+dog.voice="woof";
+dog.say();
+//Prototypes
+const animal = {
+    say:function(){
+        console.log(this.name, 'goes', this.voice);
+    }
+}
+function createAnimal(name, voice){
+const result =Object.create(animal);
+result.name=name;
+result.voice=voice;
+return result;
+};
+const dog = createAnimal('Dog', 'woof');
+const cat = createAnimal('Cat', 'meou');
+console.log(dog);
+dog.say();
+cat.say();
+//Prototypes
+const animal = {
+    say:function(){
+        console.log(this.name, 'goes', this.voice);
+    }
+}
+function Animal(name, voice){
+const result =Object.create(animal);
+result.name=name;
+result.voice=voice;
+return result;
+};
+const dog = new Animal('Dog', 'woof');
+const cat = new Animal('Cat', 'meou');
+console.log(dog);
+dog.say();
+cat.say();
+
+
+//
+function Animal(name, voice) {
+    this.name = name;
+    this.voice = voice;
+};
+
+Animal.prototype.say = function(){
+    console.log(this.name, 'goes', this.voice);
+}
+const dog = new Animal('Dog', 'woof');
+const cat = new Animal('Cat', 'meou');
+dog.say();
+cat.say();
+////
+
+function Animal(name, voice) {
+    this.name = name;
+    this.voice = voice;
+  }
+  
+  Animal.prototype.say = function() {
+    console.log(this.name, "goes", this.voice);
+  };
+  const dog = new Animal("Dog", "woof");
+  const cat = new Animal("Cat", "meou");
+  dog.say();
+  cat.say();
+
+  /////
