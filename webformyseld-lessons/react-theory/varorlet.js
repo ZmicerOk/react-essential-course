@@ -388,9 +388,9 @@ const cat = new Animal('Cat', 'meou');
 dog.say();
 cat.say();
 ////
-1. Object.setPrototypeOf(cat, animal);
-2. Object.create(animal);
-3. new
+// 1. Object.setPrototypeOf(cat, animal);
+// 2. Object.create(animal);
+// 3. new
 /////
 console.log(dog.toString());
 const obj = Object.create(null);
