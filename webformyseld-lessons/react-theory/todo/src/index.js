@@ -5,19 +5,24 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(<App />, document.getElementById("root"));
-
-function Animal(name, voice) {
-  this.name = name;
-  this.voice = voice;
+//Classes properties
+class Counter {
+  constructor() {
+    this.count = 0;
+    this.inc = () => {
+      this.count += Counter.incrementStep;
+    }
+  }
 }
-
-Animal.prototype.say = function() {
-  console.log(this.name, "goes", this.voice);
-};
-const dog = new Animal("Dog", "woof");
-const cat = new Animal("Cat", "meou");
-dog.say();
-cat.say();
+Counter.incrementStep = 5;
+Counter.incrementAll = function (arr){
+    arr.forEach((c)=> c.inc());
+  }
+Counter.incrementAll([]);
+const cnt = new Counter ();
+// console.log(cnt.count);
+cnt.inc();
+setTimeout(cnt.inc,2000);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

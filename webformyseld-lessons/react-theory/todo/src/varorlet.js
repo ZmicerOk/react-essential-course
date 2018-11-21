@@ -213,15 +213,20 @@ const res = Object.entries(dict2)
     .map(([key]) => key);
 console.log(res);
 //Array Destructuring
-const shape={
-    type:"segment",
+const shape = {
+    type: "segment",
     coordinates: {
-        start:[10,15],
-        end:[17,15]
+        start: [10, 15],
+        end: [17, 15]
     }
 };
-const {coordinates:{start:[strtX, strtY], end:[endX,endY]}}=shape;
-console.log(strtX,strtY,endX,endY);
+const {
+    coordinates: {
+        start: [strtX, strtY],
+        end: [endX, endY]
+    }
+} = shape;
+console.log(strtX, strtY, endX, endY);
 
 //Template Literals
 const user = "Bob";
@@ -234,33 +239,37 @@ console.log(txt2);
 console.log(txt3);
 
 //Objects
-const x=10;
-const y=10;
+const x = 10;
+const y = 10;
 const point = {
-    x:x,
-    y:y,
-    draw: function(){
+    x: x,
+    y: y,
+    draw: function () {
         //...
     }
 };
- console.log(point);
- const p = {x,y, draw(ctx){
-     //
- }};
- console.log(p);
+console.log(point);
+const p = {
+    x,
+    y,
+    draw(ctx) {
+        //
+    }
+};
+console.log(p);
 
- //Objects
+//Objects
 const prefix = '_blah_';
 const data = {
-    [prefix+'name']: 'Bob',
-    [prefix+'age']: 23
+    [prefix + 'name']: 'Bob',
+    [prefix + 'age']: 23
 };
- console.log(data);
+console.log(data);
 
- //16 Objects
+//16 Objects
 
-const defaults ={
-    host:'localhost',
+const defaults = {
+    host: 'localhost',
     dbName: 'blog',
     user: 'admin'
 };
@@ -270,21 +279,21 @@ const opts = {
     password: 'utopia'
 };
 
-const wasap = Object.assign({}, defaults, opts);//shallow copy?
+const wasap = Object.assign({}, defaults, opts); //shallow copy?
 console.log(defaults);
 console.log(wasap);
 //16 Objects
 const person = {
-    name:'Bon Dylan',
-    friends: ['Emerson','Lake','Palmer']
+    name: 'Bon Dylan',
+    friends: ['Emerson', 'Lake', 'Palmer']
 }
 const shallowCopy = Object.assign({}, person);
 person.friends.push('Franky goes to Hollywood');
 console.log(shallowCopy);
 
 //Spread operator for Objects
-const defaults ={
-    host:'localhost',
+const defaults = {
+    host: 'localhost',
     dbName: 'blog',
     user: 'admin'
 };
@@ -298,25 +307,24 @@ const res = {
     ...defaults,
     ...opts,
     port,
-    connect(){
+    connect() {
         //
     }
-    };
+};
 console.log(res);
 
 //Prototypes
-
 const animal = {
-    say:function(){
+    say: function () {
         console.log(this.name, 'goes', this.voice);
     }
 }
-const dog={
+const dog = {
     name: 'dog',
     voice: 'woof'
 };
 Object.setPrototypeOf(dog, animal);
-const cat={
+const cat = {
     name: 'cat',
     voice: 'meow'
 };
@@ -325,27 +333,27 @@ dog.say();
 cat.say();
 
 //Prototypes
-
 const animal = {
-    say:function(){
+    say: function () {
         console.log(this.name, 'goes', this.voice);
     }
 }
-const dog=Object.create(animal);
-dog.name="Dog";
-dog.voice="woof";
+const dog = Object.create(animal);
+dog.name = "Dog";
+dog.voice = "woof";
 dog.say();
 //Prototypes
 const animal = {
-    say:function(){
+    say: function () {
         console.log(this.name, 'goes', this.voice);
     }
 }
-function createAnimal(name, voice){
-const result =Object.create(animal);
-result.name=name;
-result.voice=voice;
-return result;
+
+function createAnimal(name, voice) {
+    const result = Object.create(animal);
+    result.name = name;
+    result.voice = voice;
+    return result;
 };
 const dog = createAnimal('Dog', 'woof');
 const cat = createAnimal('Cat', 'meou');
@@ -354,30 +362,25 @@ dog.say();
 cat.say();
 //Prototypes
 const animal = {
-    say:function(){
+    say: function () {
         console.log(this.name, 'goes', this.voice);
     }
 }
-function Animal(name, voice){
-const result =Object.create(animal);
-result.name=name;
-result.voice=voice;
-return result;
+function Animal(name, voice) {
+    this.name = name;
+    this.voice = voice;
 };
 const dog = new Animal('Dog', 'woof');
 const cat = new Animal('Cat', 'meou');
-console.log(dog);
+// console.log(dog);
 dog.say();
 cat.say();
-
-
 //
 function Animal(name, voice) {
     this.name = name;
     this.voice = voice;
 };
-
-Animal.prototype.say = function(){
+Animal.prototype.say = function () {
     console.log(this.name, 'goes', this.voice);
 }
 const dog = new Animal('Dog', 'woof');
@@ -385,18 +388,67 @@ const cat = new Animal('Cat', 'meou');
 dog.say();
 cat.say();
 ////
+1. Object.setPrototypeOf(cat, animal);
+2. Object.create(animal);
+3. new
+/////
+console.log(dog.toString());
+const obj = Object.create(null);
+console.log(obj.toString());
 
-function Animal(name, voice) {
-    this.name = name;
-    this.voice = voice;
+//Classes
+class Animal {
+    constructor(name, voice) {
+      this.name = name;
+      this.voice = voice;
+    }
+    say() {
+      console.log(this.name, 'goes', this.voice);
+    }
+  }
+  //duck --> Bird.prototype --> Animal.prototype --> Object.prototype -->null
+  class Bird extends Animal{
+    constructor(name, voice, canFly){
+      super(name, voice);
+      super.say();
+      this.canFly = canFly;
+    }
+    say(){
+      console.log('birds don\'t like to talk');
+    }
   }
   
-  Animal.prototype.say = function() {
-    console.log(this.name, "goes", this.voice);
-  };
-  const dog = new Animal("Dog", "woof");
-  const cat = new Animal("Cat", "meou");
-  dog.say();
-  cat.say();
+  const duck = new Bird ('Duck','quack', true);
+  duck.say();
 
-  /////
+  //Classes properties
+class Counter {
+    count = 1;
+    inc = () =>{
+      this.count+= Counter.incrementStep;
+      console.log(this.count);
+    }
+    static incrementStep = 5;
+    static incrementAll = function (arr){
+      arr.forEach((c)=> c.inc());
+    }
+  }
+  Counter.incrementAll([]);
+  const cnt = new Counter ();
+  // console.log(cnt.count);
+  cnt.inc();
+  setTimeout(cnt.inc,2000);
+  
+  //Classes properties
+  class Counter {
+    constructor() {
+      this.count = 0;
+      this.inc = () => {
+        this.count += Counter.incrementStep;
+      }
+    }
+  }
+  Counter.incrementStep = 5;
+  Counter.incrementAll = function (arr){
+      arr.forEach((c)=> c.inc());
+    }
