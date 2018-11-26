@@ -8,22 +8,22 @@ import ItemStatusFilter from './components/item-status-filter';
 
 import './index.css';
 
-const App = () =>{
+const App = () => {
   const todoData = [
-    {label: 'Drink Coffee', important: false, id:1},
-    {label: 'Make React App', important: true, id:2},
-    {label: 'Have a break', important: false, id:3}
+    { label: 'Drink Coffee', important: false, id: 1 },
+    { label: 'Make React App', important: true, id: 2 },
+    { label: 'Have a break', important: false, id: 3 }
   ];
-return(
-  <div className="todo-app">
-     <AppHeader toDo={1} done={3} />
-     <div className="top-panel d-flex">
+  return (
+    <div className="todo-app">
+      <AppHeader toDo={1} done={3} />
+      <div className="top-panel d-flex">
         <SearchPanel />
         <ItemStatusFilter />
       </div>
-    <TodoList todos = {todoData}/>
-  </div>
-);
+      <TodoList todos={todoData} />
+    </div>
+  );
 };
 
-ReactDOM.render(<App/>, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
