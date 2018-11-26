@@ -3,9 +3,9 @@ import TodoListItem from './todo-list-item';
 import './todo-list.css';
 const TodoList = ({ todos }) => {
     const elements = todos.map((item) => {
-        const {id, ...itemProps} = item;
+        const {id, ...itemProps} = item;//destructuring & Rest parametr
         return (
-            <li key={id} className='list-group-item'>
+            <li  key={id} className='list-group-item'>
             <TodoListItem {...itemProps} /></li>
         );
     });
