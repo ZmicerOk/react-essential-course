@@ -4,11 +4,11 @@ import "./item-status-filter.css";
 
 export default class ItemStatusFilter extends Component {
   buttons = [
-    { name: "all", label: "All" },
-    { name: "active", label: "Active" },
-    { name: "done", label: "Done" }
+    { name: "all", label: "Всего" },
+    { name: "active", label: "Осталось" },
+    { name: "done", label: "Сделано" }
   ];
- 
+
   render() {
     const { filter, onFilterChange } = this.props;
     const buttons = this.buttons.map(({ name, label }) => {
@@ -16,8 +16,12 @@ export default class ItemStatusFilter extends Component {
       const classNames =
         "btn " + (isActive ? "btn-info" : "btn-outline-secondary");
       return (
-        <button type="button" className={classNames} key={name}
-        onClick= {()=>onFilterChange(name)}>
+        <button
+          type="button"
+          className={classNames}
+          key={name}
+          onClick={() => onFilterChange(name)}
+        >
           {label}
         </button>
       );
