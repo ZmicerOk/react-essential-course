@@ -4,11 +4,12 @@ export default class SwapiService {
         const res = await fetch(`${this._apiBase}${url}`); //return promiss //вначале получаем ответ сервера и будем ждать рез. промиса
         console.log("responce status ", res.status); //200
         if (!res.ok) {
-            throw new Error(`Coul not fetch ${url}, recieved ${res.status}`); //!!!
+            throw new Error(`Could not fetch ${url}, recieved ${res.status}`); //!!!
         };
         const body = await res.json(); //return promiss//--//--
         return body;
     }
+    
     async getAllPeople() {
         const res = await this.getResource(`/people/`);
         return res.results;
