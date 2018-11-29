@@ -1,0 +1,10 @@
+.error-indicator{
+    color: orange;
+    font-size: 1rem;
+    margin: auto;
+    text-align: center;
+}
+.error-indicator .boom{
+    font-size: 2rem;
+    
+}
