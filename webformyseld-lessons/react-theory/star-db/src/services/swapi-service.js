@@ -2,7 +2,7 @@ export default class SwapiService {
   _apiBase = "https://swapi.co/api";
   async getResource(url) {
     const res = await fetch(`${this._apiBase}${url}`); //return promiss //вначале получаем ответ сервера и будем ждать рез. промиса
-    console.log("responce status ", res.status); //200
+    // console.log("responce status ", res.status); //200
 
     if (!res.ok) {
       throw new Error(`Could not fetch ${url}, recieved ${res.status}`); //!!!
@@ -12,8 +12,18 @@ export default class SwapiService {
   }
 
   async getAllPeople() {
-    const res = await this.getResource(`/people/`);
-    return res.results.map(this._transformPerson);
+    const res1 = await this.getResource(`/people/`);
+    // const res2 = await this.getResource(`/people/?page=2`);
+    // const res3 = await this.getResource(`/people/?page=3`);
+    // const res4 = await this.getResource(`/people/?page=4`);
+    // const res5 = await this.getResource(`/people/?page=5`);
+    // const res6 = await this.getResource(`/people/?page=6`);
+    // const res7 = await this.getResource(`/people/?page=7`);
+    // const res8 = await this.getResource(`/people/?page=8`);
+    // const res9 = await this.getResource(`/people/?page=9`);
+    // console.log(res9);
+    //const res=[...res1.results, ...res2.results, ...res3.results, ...res4.results, , ...res5.results, ...res6.results, ...res7.results, ...res8.results, ...res9.results];
+    return res1.results.map(this._transformPerson);
   }
 
   async getPerson(id) {
@@ -48,7 +58,7 @@ export default class SwapiService {
 
   _extractId(item) {
     const idRegExp = /\/([0-9]*)\/$/;
-    console.log("idRegExp", item.url.match(idRegExp)[1]);
+    // console.log("idRegExp", item.url.match(idRegExp)[1]);
 
     return item.url.match(idRegExp)[1];
   }
