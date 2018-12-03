@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './person-details.css';
 import SwapiService from "../../services/swapi-service";
+import Spinner from '../spinner';
 
 export default class PersonDetails extends Component {
 
@@ -18,6 +19,7 @@ export default class PersonDetails extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.personId !== prevProps.personId) {
       this.updatePerson();
+      console.log("id", this.props.personId);
     }
   }
 
