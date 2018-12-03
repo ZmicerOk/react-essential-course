@@ -1,17 +1,16 @@
 export default class SwapiService {
   _apiBase = "https://swapi.co/api";
-  async getResource(url) {
+  getResource = async (url)=> {
     const res = await fetch(`${this._apiBase}${url}`); //return promiss //вначале получаем ответ сервера и будем ждать рез. промиса
     // console.log("responce status ", res.status); //200
     
     if (!res.ok) {
       throw new Error(`Could not fetch ${url}, recieved ${res.status}`); //!!!
     }
-    const body = await res.json(); //return promiss//--//--
-    return body;
+    return await res.json(); //return promiss//--//--
   }
 
-  async getAllPeople() {
+  getAllPeople = async () =>{
     const res1 = await this.getResource(`/people/`);
     // const res2 = await this.getResource(`/people/?page=2`);
     // const res3 = await this.getResource(`/people/?page=3`);
@@ -24,44 +23,38 @@ export default class SwapiService {
     // console.log(res9);
     //const res=[...res1.results, ...res2.results, ...res3.results, ...res4.results, , ...res5.results, ...res6.results, ...res7.results, ...res8.results, ...res9.results];
     return res1.results.map(this._transformPerson);
-  }
+  };
 
-  async getPerson(id) {
+  getPerson = async (id) =>{
     const person = await this.getResource(`/people/${id}/`);
     return this._transformPerson(person);
-  }
+  };
 
-  async getAllPlanets() {
+  getAllPlanets = async () =>{
     const res = await this.getResource(`/planets/`);
     return res.results.map(this._transformPlanet);
-  }
+  };
 
-  async getPlanet(id) {
+  getPlanet = async (id) =>{
     const planet = await this.getResource(`/planets/${id}/`);
     return this._transformPlanet(planet);
-  }
+  };
 
-  async getAllStarships() {
+  getAllStarships = async () =>{
     const res = await this.getResource(`/starships/`);
     return res.results.map(this._transformStarship);
-  }
+  };
 
-  async getStarship(id) {
+  getStarship = async (id) =>{
     const starship = this.getResource(`/starships/${id}/`);
     return this._transformStarship(starship);
-  }
+  };
 
-  // _extractId(item){
-  //     const idRegExp = /\/([0-9]*)\/$/;
-  //     return item.url.match(idRegExp)[1];
-  // }
-
-  _extractId(item) {
+  _extractId=(item)=> {
     const idRegExp = /\/([0-9]*)\/$/;
     // console.log("idRegExp", item.url.match(idRegExp)[1]);
-
     return item.url.match(idRegExp)[1];
-  }
+  };
 
   _transformPlanet = planet => {
     return {
