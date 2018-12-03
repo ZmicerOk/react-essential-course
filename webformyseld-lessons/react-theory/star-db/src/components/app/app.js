@@ -50,7 +50,9 @@ if (this.state.hasError){
         </button>
        
       <ErrorButton/>
-      
+      <PeoplePage/> 
+      <PeoplePage/>  
+      <PeoplePage/>
 <PeoplePage/>
       </div>
     );
