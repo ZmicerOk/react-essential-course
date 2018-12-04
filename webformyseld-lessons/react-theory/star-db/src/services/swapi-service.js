@@ -22,6 +22,7 @@ export default class SwapiService {
     // const res9 = await this.getResource(`/people/?page=9`);
     // console.log(res9);
     //const res=[...res1.results, ...res2.results, ...res3.results, ...res4.results, , ...res5.results, ...res6.results, ...res7.results, ...res8.results, ...res9.results];
+    //return res.map(this._transformPerson);
     return res1.results.map(this._transformPerson);
   };
 

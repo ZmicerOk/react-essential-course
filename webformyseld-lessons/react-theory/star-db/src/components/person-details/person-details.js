@@ -40,7 +40,7 @@ export default class PersonDetails extends Component {
   render() {
 
     if (!this.state.person) {
-      return <span>Select a person from a list</span>;
+      return <span className='select-first'>Select a person from a list</span>;
     }
 
     const { id, name, gender,
