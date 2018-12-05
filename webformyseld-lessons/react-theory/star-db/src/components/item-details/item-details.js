@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import ErrorButton from '../error-button/error-button';
 import SwapiService from '../../services/swapi-service';
 
-import './person-details.css';
+import './item-details.css';
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
 
   swapiService = new SwapiService();
 
@@ -47,7 +47,7 @@ export default class PersonDetails extends Component {
               birthYear, eyeColor } = person;
 
     return (
-      <div className="person-details card">
+      <div className="item-details card">
         <img className="person-image"
           src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
           alt="character"/>
