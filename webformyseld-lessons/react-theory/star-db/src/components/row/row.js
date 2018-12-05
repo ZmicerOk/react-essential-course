@@ -1,10 +1,10 @@
 import React from 'react';
+
 import './row.css';
 
-
-const Row = ({left, right}) =>{
-    return(
-      <div className="row mb2">
+const Row = ({ left, right }) => {
+  return (
+    <div className="row mb2">
       <div className="col-md-6">
         {left}
       </div>
@@ -12,7 +12,7 @@ const Row = ({left, right}) =>{
         {right}
       </div>
     </div>
-    )
-  }
-  export default Row;
-  
+  );
+};
+
+export default Row;
