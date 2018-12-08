@@ -24,7 +24,7 @@ export default class ItemDetails extends Component {
   }
 
   updateitem() {
-    const { itemId } = this.props;
+    const { itemId } = this.props; 
     if (!itemId) {
       return;
     }
